@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v4
+      with:
+        submodules: false
+
+    - name: Build and test
+      run: |
+        g++ -std=c++17 $(find src/assignments -name main.cpp) -o main
+
+
+
+        
