@@ -4,7 +4,7 @@
 class Problem {
 public:
 	static int *flipShift(int a, int b) {
-		int arr[3];
+		int *arr = new int[3];
 		// a_prime
 		int up_bound = log2(a) + 1;
 		int low_bound = log2(a);
@@ -51,6 +51,7 @@ public:
 			if (a_shift == b) {
 				shift = i;
 				break;
+
 			}
 		}
 		arr[2] = shift;
