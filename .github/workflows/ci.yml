@@ -22,8 +22,9 @@ jobs:
       run: |
         for file in $(find src -type f -name main.cpp); do
             name=$(basename $(dirname "$file"))
-            echo "Compiling $file -> build/$name"
-            g++ -std=c++17 -Wall -Werror "$file" -o "build/$name"
+            mkdir -p "build/$name"
+            echo "Compiling $file -> build/$name/$name"
+            g++ -std=c++17 -Wall -Werror "$file" -o "build/$name/$name"
         done
 
         
