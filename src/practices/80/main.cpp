@@ -8,7 +8,7 @@ public:
     int currC = 0;
     // int totalC = 0;
     int removeDuplicates(vector<int>& nums) {
-        for(int i = 0; i < nums.size(); i++){
+        for(int i = 0; i < (int)nums.size(); i++){
             if(nums[prevI] != nums[i]){
                 prevI = i;
                 
