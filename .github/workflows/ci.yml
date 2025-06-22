@@ -20,8 +20,10 @@ jobs:
 
     - name: Build and test
       run: |
-        g++ -std=c++17 $(find src/assignments -name main.cpp) -o main
-
-
+        for file in $(find src -type f -name main.cpp); do
+            name=$(basename $(dirname "$file"))
+            echo "Compiling $file -> build/$name"
+            g++ -std=c++17 -Wall -Werror "$file" -o "build/$name"
+        done
 
         
