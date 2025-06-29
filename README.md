@@ -1,8 +1,6 @@
 # 📘 comp_code
 
-Welcome to **comp_code**, a personal archive of competitive programming solutions and practice problems.
-
----
+Welcome to my personal C/C++ playground! 
 
 ## 📌 About This Repository
 
