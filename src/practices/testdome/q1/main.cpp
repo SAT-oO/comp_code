@@ -1,24 +1,29 @@
 #include <cmath>
 #include <iostream>
 
-class Problem {
+class Problem
+{
 public:
-	static int *flipShift(int a, int b) {
+	static int *flipShift(int a, int b)
+	{
 		int *arr = new int[3];
 		// a_prime
 		int up_bound = log2(a) + 1;
 		int low_bound = log2(a);
 		int a_prime = 0;
-		if (pow(2, up_bound) - a <= pow(2, low_bound) - a) {
+		if (abs(pow(2, up_bound) - a) <= abs(pow(2, low_bound) - a))
+		{
 			a_prime = pow(2, up_bound);
-
-		} else {
+		}
+		else
+		{
 			a_prime = pow(2, low_bound);
 		}
 		// arr[0]
 		int flips_bi = a ^ a_prime;
 		int flips = 0;
-		for (int i = up_bound; i >= 0; i--) {
+		for (int i = up_bound; i >= 0; i--)
+		{
 			flips += flips_bi % 2;
 			flips_bi = flips_bi >> 1;
 		}
@@ -28,9 +33,12 @@ public:
 		int b_prime = 0;
 		up_bound = log2(b) + 1;
 		low_bound = log2(b);
-		if (pow(2, up_bound) - b <= pow(2, low_bound) - b) {
+		if (abs(pow(2, up_bound) - b) <= abs(pow(2, low_bound) - b))
+		{
 			b_prime = pow(2, up_bound);
-		} else {
+		}
+		else
+		{
 			b_prime = pow(2, low_bound);
 		}
 		// std::cout << "a_prime: " << a_prime << ", b_prime: " << b_prime << std::endl;
@@ -38,7 +46,8 @@ public:
 		// arr[1]
 		flips_bi = b ^ b_prime;
 		flips = 0;
-		for (int i = up_bound; i >= 0; i--) {
+		for (int i = up_bound; i >= 0; i--)
+		{
 			flips += flips_bi % 2;
 			flips_bi = flips_bi >> 1;
 		}
@@ -46,12 +55,13 @@ public:
 
 		// arr[2]
 		int shift = 0;
-		for (int i = 0; i < up_bound; i++) {
+		for (int i = 0; i < up_bound; i++)
+		{
 			int a_shift = a << i;
-			if (a_shift == b) {
+			if (a_shift == b)
+			{
 				shift = i;
 				break;
-
 			}
 		}
 		arr[2] = shift;
@@ -61,9 +71,12 @@ public:
 };
 
 #ifndef RunTests
-int main() {
+int main()
+{
 	// test your code if you wish
-	std::cout << Problem::flipShift(2, 1);
-    
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << Problem::flipShift(1, 2)[i] << std::endl;
+	}
 }
 #endif
